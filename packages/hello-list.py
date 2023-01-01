@@ -27,6 +27,32 @@ car_makes.append("volkswagon")
 
 print("Post late entries, The updated car makers are {}".format(len(car_makes)))
 
+# listing the type of each item in the list using list comprehension
 
+print("So, here are the final car makes \n", *[(item, type(item)) for item in car_makes], end=("\n"))
 
+print("Changing the duplicate make\n")
 
+def replace_list_items(itemList, item, replace_item_name):
+    """ A simple item replacement function which replaces the desired item in the list with provided value 
+        
+        !Note: This method only works for string items 
+        :param list itemList: The list desired to be modified
+        :param str item: The item in the list to modify
+        :param str replace_item_name; The new item name which should be updated
+    """
+
+    item_index = itemList.index(item)
+    if(len(itemList) < 1): 
+        return None;
+    if (isinstance(item, str) and isinstance(replace_item_name, str)):
+        if(item_index >= 0):
+            itemList[item_index] = replace_item_name
+            return itemList
+        else:
+            return None
+    else:
+        return None
+
+car_makes = replace_list_items(car_makes, "volkswagon", "bently")
+print(car_makes)
