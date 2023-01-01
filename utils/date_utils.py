@@ -22,6 +22,15 @@ def get_today_day():
     # convert the date string returned by the get_today_date_only to list
     current_date = get_today_date_only().split("-")
     #current date from python datetime constructor
-    current_date = datetime.datetime(...current_date)
+    """
+       In the below function there are few intresting things are happening. Let's understand them one by one
+       - we are spliting the date returned by get_today_date_only method
+       - The returned list contains string elements
+       - We want to construct a new date with list items using python datetime module
+       - The datetime.datetime() method expects args as integers
+       - We are using list comprehension to covert the string item to int
+       - We are using `*` operator to expand the iterator and pass them as args
+    """
+    current_date = datetime.datetime(*[int(item) for item in current_date])
     return current_date.strftime("%A")
 

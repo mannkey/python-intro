@@ -8,7 +8,7 @@ copyright: Thribhuvan Kumar DSVB
 """
 # lets try to understand list, sublists 
 
-from ..utils.date_utils import get_today_date_only, get_today_day 
+from utils.date_utils import get_today_date_only, get_today_day 
 
 
 car_makes = ["volkswagon", "mercedes", "audi", "toyota"]
@@ -19,9 +19,13 @@ merc_cars = ["s-class", "e-class", "g-class", "c-class"]
 audi_cars = ["r8", "q7", "q5", "r7"]
 toy_cars = ["land crusier", "fortuner", "innova"]
 
-print("Total entries for car makers this year {} for {}".format(len(car_makes), date_utils.get_today_date_only()))
+print("Total entries for car makers this year on {1} are {0}".format(len(car_makes), get_today_date_only()), end=".\n")
 
-print("Today is a beautiful {}".format(date_utils.get_today_day()))
+print("It is a beautiful {}".format(get_today_day()), end=".\n")
+
+car_makes.append("volkswagon")
+
+print("Post late entries, The updated car makers are {}".format(len(car_makes)))
 
 
 
