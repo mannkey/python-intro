@@ -12,11 +12,11 @@ import datetime
 
 
 def get_today_date_only():
-    """ A simple function which returns date in format mm-dd-yy"""
+    """ A simple function which returns date in format d-m-Y(01-01-1987)"""
 
     current_date =  datetime.datetime.now()
     # strftime is a method in datetime class to format date
-    return current_date.strftime("%x").replace("/", "-")
+    return current_date.strftime("%d-%m-%Y")
 
 def get_today_day():
     """ A simple function to return day """
@@ -33,6 +33,9 @@ def get_today_day():
        - We are using list comprehension to covert the string item to int
        - We are using `*` operator to expand the iterator and pass them as args
     """
+    
+    # the method get_today_date_only returns in a different format, hence reversing the split array
+    current_date.reverse()
     current_date = datetime.datetime(*[int(item) for item in current_date])
     return current_date.strftime("%A")
 

@@ -29,9 +29,8 @@ print("Post late entries, The updated car makers are {}".format(len(car_makes)))
 
 # listing the type of each item in the list using list comprehension
 
-print("So, here are the final car makes \n", *[(item, type(item)) for item in car_makes], end=("\n"))
 
-print("Changing the duplicate make\n")
+print("Updating the duplicate make\n")
 
 def replace_list_items(itemList, item, replace_item_name):
     """ A simple item replacement function which replaces the desired item in the list with provided value 
@@ -55,4 +54,48 @@ def replace_list_items(itemList, item, replace_item_name):
         return None
 
 car_makes = replace_list_items(car_makes, "volkswagon", "bently")
-print(car_makes)
+
+# list comprehension example
+def title_case_list_elements(data_list: list[str]) -> list[str]: 
+    return [element.capitalize() for element in data_list if len(data_list) > 0] 
+
+
+###########################################################################
+# Sorting function 
+# - sorted
+# > The return values for the below 3 method are `None`. This is so as to 
+#   avoid confusion. The original list will be changed after the operation
+#   is complete
+# - Default sort
+# - Reverse sort
+# - Custom sort
+##########################################################################
+
+def return_sorted_list_of_strings(data_list: list[str]) -> list[str]:
+    data_list.sort(key=str.lower)
+    return data_list
+
+def return_reverse_sorted_list_of_strings(data_list: list[str]) -> list[str]:
+    data_list.sort(reverse=True, key=str.lower)
+    return data_list
+
+##########################################################################
+# since, the sort method returns `None` after success, always create a copy
+# always create a copy of original
+##########################################################################
+
+def return_string_length_sorted_list(data_list: list[str]) -> list[str]:
+    dup_data_list = data_list.copy()
+    dup_data_list.sort(key=len)
+    return dup_data_list
+
+##########################################################################
+# printing methods
+#########################################################################
+print("Here's the final entries", end="\n")
+print(title_case_list_elements(car_makes))
+print("Car makes can be sorted in the following ways\n")
+
+print("Default sort \t {0}".format(return_sorted_list_of_strings(car_makes)))
+print("Reverse sort \t {0}".format(return_reverse_sorted_list_of_strings(car_makes)))
+print("Custom sort on string length \t {0}".format(return_string_length_sorted_list(car_makes)))
